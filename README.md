@@ -12,5 +12,5 @@ helm repo index .
 ```
 helm repo add education-service-app https://netrogajsvetchu.github.io/education-service-app/
 helm repo list
-helm install education-test educ-test/education-service
+helm install education-test education-service-app/education-service
 ```
