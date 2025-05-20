@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: education-service
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: education-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: education-service
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: education-service
+    spec:
+      containers:
+        - name: catalog-service
+          image: >-
+            cr.yandex/crpqhm9qhte79o09rkl7/lab-investment-education-service:develop
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: education-service-configmap
+      imagePullSecrets:
+        - name: ycr-secret
+      schedulerName: default-scheduler

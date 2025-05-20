@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: education-service-configmap
+  namespace: {{ .Values.namespace }}
+data:
+  INVESTMENT_SERVICE_URL: http://investment-service-develop:8081
+  ACCOUNT_SERVICE_URL: http://investment-account-service-dev:8080
+  CATALOG_SERVICE_URL: http://investment-catalog-service-dev:8080
+  CUSTOMER_SERVICE_URL: http://investment-customer-service-dev:8080
+  DB_URL: jdbc:postgresql://postgres-service:5432/education_service_db
+  
